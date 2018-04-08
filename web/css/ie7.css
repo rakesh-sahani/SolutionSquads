@@ -1,0 +1,13 @@
+/*Website Template by freewebsitetemplates.com*/
+#header ul {
+	height: 34px;
+}
+#header ul li {
+	display: inline;
+}
+#body .header div ul {
+	zoom: 1;
+}
+#footer div ul li {
+	display: inline;
+}
