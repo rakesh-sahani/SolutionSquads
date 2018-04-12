@@ -76,14 +76,14 @@
                                             <%=user%>
                                         </p>
                                     </li>
-
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="ChangePassword.jsp" class="btn btn-default btn-flat">Change Password</a>
+                                            
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="logout.jsp" class="btn btn-default btn-flat" >Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -151,3 +151,5 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
+                            
+                        

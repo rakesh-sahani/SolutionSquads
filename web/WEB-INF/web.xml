@@ -12,6 +12,10 @@
         <servlet-name>DisplayServiceServlet</servlet-name>
         <servlet-class>OnsiteTeckies.DisplayServiceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeServlet</servlet-name>
+        <servlet-class>OnsiteTeckies.ChangeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DisplayServiceServlet</servlet-name>
         <url-pattern>/DisplayServiceServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeServlet</servlet-name>
+        <url-pattern>/ChangeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
