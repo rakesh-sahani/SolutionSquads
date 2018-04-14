@@ -1,24 +1,21 @@
-<%-- 
-    Document   : Home
-    Created on : Jun 16, 2017, 3:42:18 PM
-    Author     : Ryu
---%>
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <%@page language="java" contentType="text/html" pageEncoding="windows-1252" import="java.util.*,java.sql.*"%>
-        <title>Services Update</title>
+        <title>Service Update</title>
     </head>
     <script>
         function url()
         {
-            var sid = document.getElementById('Title').value;
+            var sid = document.getElementById('sid').value;
             location.href = 'DisplayServiceServlet?sid=' + sid;
         }
 
     </script>
-    <body>
+    <body>  
+
 
         <%@include file="dashboard.jsp" %>
 
@@ -31,7 +28,7 @@
                     <small>Control panel</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Services Update</a></li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="active">Dashboard</li>
                 </ol>
             </section>
@@ -45,62 +42,70 @@
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Services Update Page</h3>
+                                <h3 class="box-title">Price Page</h3>
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
-                            <form  action="ServiceUpdate" enctype="multipart/form-data" method="post">
+                            <form  action="ServiceUpdate" enctype="multipart/form-data" method="post" name="myform" id="myform">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label>Services Title</label>
-                                        <select class="form-control select2" style="width: 100%;" name="Title" id="Title" onchange="return url();">
-
+                                        <label>Service Title</label>
+                                        <select class="form-control select2" style="width: 100%;" name="sid" id="sid" onchange="return url();">
                                             <%! int sid;%>
                                             <%
                                                 Connection con = null;
                                                 PreparedStatement ps = null;
                                                 ResultSet rs = null;
-                                                String scat;
                                                 try {
                                                     con = OnsiteTeckies.Connect.makeConnection();
                                                     String query = "select * from services";
                                                     ps = con.prepareStatement(query);
                                                     rs = ps.executeQuery();
-                                            %> 
+                                            %>
                                             <option selected="selected" disabled="">Choose Category</option>
                                             <%
                                                 while (rs.next()) {
-
                                                     sid = rs.getInt(2);
-                                                    scat = rs.getString(3);
+                                                    String cat = rs.getString(3);
 
 
                                             %>
-                                            <option value="<%=sid%>"><%=scat%></option>   
-                                            <%}
-
+                                            <option  value="<%=sid%>"><%=cat%></option>
+                                            <%
+                                                    }
                                                 } catch (Exception e) {
                                                     e.printStackTrace();
                                                 }
-                                            %>
-                                            
-                                            <%
-                                                String cat;
-                                                cat = (String) request.getAttribute("cat");
+                                            %>                  
 
-                                                if (cat != null) {
-                                            %> <option selected="selected" value="<%=sid%>"><%=cat%></option><%}%>
+                                            <%
+                                                String cate = (String) request.getAttribute("cat");
+
+                                                if (cate != null) {
+
+                                            %> <option selected="selected" value="<%=sid%>"><%=cate%></option><%}
+                                            %>
+
                                         </select>
                                     </div>
-                                          <% 
-                      String content,img;
-                  content =(String)request.getAttribute("con");
-                  img= (String)request.getAttribute("img");
-  if(content!=null){
-      %> 
+                                    
+                                    <%
+                                        String detail, img;
+                                        detail = (String) request.getAttribute("con");
+                                        img = (String) request.getAttribute("img");
+                                        if (detail != null) {
+                                    int id = (Integer) request.getAttribute("id");
+                                    %>
+                                    <input type="hidden" name="id" value="<%=id%>"/>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Service Name</label>
+                                        <input type="text" value="<%=cate%>"class="form-control" id="sname" name="sname"  placeholder="Service Name">
+                                    </div>            
+
+
                                     <div class="box">
                                         <div class="box-header">                                                                           
-                                            <h3 class="box-title">Services Content                                      
+                                            <h3 class="box-title">Service Detail                                      
                                             </h3>  
                                             <!-- tools box -->
                                             <div class="pull-right box-tools">
@@ -111,7 +116,7 @@
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body pad">
-                                            <textarea class="textarea" id="content" name="Content" placeholder="Content" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><%=content%></textarea>
+                                            <textarea class="textarea" id="detail" name="detail"  placeholder="Plan Detail" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><%=detail%></textarea>
                                         </div>
                                     </div>
                                     <div class="box">
@@ -127,7 +132,7 @@
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body pad">
-                                            <img src="../images/<%=img%>" width="100%" height="300px" >
+                                            <img src="../images/<%=img%>"  width="100%" height="300px" >
                                         </div>
                                     </div>  <% }%>
                                     <div class="box-body">                                    
@@ -144,7 +149,7 @@
 
                                 <%
                                     String res = (String) session.getAttribute("result");
-                                    if (res!=null) {
+                                    if (res != null) {
                                 %>
 
                                 <!-- /.box-header -->
@@ -157,10 +162,7 @@
 
                                 <%
                                         session.removeAttribute("result");
-                                    }
-
-                                    
-                                        else {
+                                    } else {
 
                                         session.setAttribute("result", "");
                                     }
@@ -182,16 +184,20 @@
                         <!-- /.content -->
                     </div>
                     <!-- /.content-wrapper -->
-<script>
+                    <script>
                         function check() {
 
-                           if (document.getElementById('Title').selectedIndex == "") {
-                                alert('Title Cannot be Blank Left !!');
+                            if (document.getElementById('sid').selectedIndex == "") {
+                                alert('Service ID Cannot be Blank Left !!');
                                 return false;
                             }
-                            
-                            if (document.getElementById('content').value == "") {
-                                alert('Testimonial Cannot be Blank Left !!');
+
+                            if (document.getElementById('sname').value == "") {
+                                alert('Service Name Cannot be Blank Left !!');
+                                return false;
+                            }
+                            if (document.getElementById('detail').value == "") {
+                                alert('Detail Cannot be Blank Left !!');
                                 return false;
                             }
                             if (document.getElementById('img').value == "") {

@@ -26,9 +26,9 @@ public class DisplayServiceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd;
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
         String sid = request.getParameter("sid");
 
         try {

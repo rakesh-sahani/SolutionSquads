@@ -55,7 +55,7 @@ public class PriceServlet
     Part part = request.getPart("img");
     String fileName = extractFileName(part);
     part.write(savePath + File.separator + fileName);
-    int pid = Integer.parseInt(request.getParameter("pid"));
+    int pid = Integer.parseInt(request.getParameter("id"));
     pname = request.getParameter("pname");
     detail = request.getParameter("detail");
     if (pname != null) {
