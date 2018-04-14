@@ -62,7 +62,7 @@ public class PriceServlet
       try {
         System.out.println("in ProjectServlet = " + pname + "");
         String filePath = fileName;
-        String SqlQuery = "UPDATE pricing SET  pname = '" + pname + "',img = '" + filePath + "', detail = '" + detail + "' WHERE pid = '" + pid + "' ";
+        String SqlQuery = "UPDATE pricing SET  img = '" + filePath + "', detail = '" + detail + "' WHERE pid = '" + pid + "' ";
         ps = con.prepareStatement(SqlQuery);
         i = ps.executeUpdate();
         if (i > 0) {

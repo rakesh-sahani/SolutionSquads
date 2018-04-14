@@ -96,7 +96,7 @@
       %> 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Plan Name</label>
-                  <input type="text" value="<%=pname%>"class="form-control" id="pname" name="pname"  placeholder="Plan Name">
+                  <input type="text" value="<%=pname%>"class="form-control" id="pname" name="pname"  placeholder="Plan Name" readonly="">
                 </div>            
                  
                 

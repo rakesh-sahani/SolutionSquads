@@ -73,7 +73,7 @@ insert  into `pricing`(`userid`,`pid`,`pname`,`img`,`detail`) values
 (1,1,'Basic','plan.jpg','Limitless Small Tasks for a Single Site <br>24 Hour Email Support <br>24 Hour Response Time<br> One Task Job Queue<br><br><br><br><br><br><h2> $199<h2>'),
 (1,2,'Plus','plan.jpg','Limitless Small Tasks for a Single Site <br>24 Hour Email Support <br>Proactive Site Upgrades <br>Secure Offsite Backups <br>Monthly Security Scan <br>12 Hour Response Time <br>Quality Checked Completion <br>One Task Job Queue<br><h2> $299  <h2>'),
 (1,3,'Premium','plan.jpg','Limitless Small Tasks for a Single Site <br>24 Hour Email Support <br>Proactive Site Upgrades <br>Secure Offsite Backups <br>Monthly Security Scan <br>12 Hour Response Time <br>Quality Checked Completion <br>Three Task Job Queue<br><h2> $399 <h2>'),
-(1,4,'Basic','plan.jpg','<b>Limitless</b> Small Tasks for a Single Site <br>24 Hour Email Support <br>24 Hour Response Time<br> One Task Job Queue<br><br><br><br><br><br><h2> $199</h2><h2></h2>');
+(1,4,'Premium Plus','plan.jpg','Limitless Small Tasks for a Single Site <br>24 Hour Email Support <br>Proactive Site Upgrades <br>Secure Offsite Backups <br>Monthly Security Scan <br>12 Hour Response Time <br>Quality Checked Completion <br>Unlimited Task Job Queue<br><h2> $799 <h2>');
 
 /*Table structure for table `seo` */
 
@@ -112,7 +112,7 @@ CREATE TABLE `services` (
   PRIMARY KEY (`sid`),
   KEY `uid` (`ID`),
   CONSTRAINT `uid` FOREIGN KEY (`ID`) REFERENCES `user` (`User_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `services` */
 
